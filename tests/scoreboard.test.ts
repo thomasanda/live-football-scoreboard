@@ -8,6 +8,7 @@ describe("Scoreboard", () => {
     const matches = scoreboard.getMatches();
     expect(matches.length).toBe(2);
   });
+
   test("add new matches to scoreboard and update score", () => {
     const scoreboard = new Scoreboard();
     scoreboard.startMatch("England", "Norway");
@@ -18,5 +19,14 @@ describe("Scoreboard", () => {
     const expected = "Germany 1 - 1 Spain";
     expect(matches[1].getScore()).toEqual(expected);
   });
-  test("remove match from scoreboard", () => {});
+
+  test("remove match from scoreboard", () => {
+    const scoreboard = new Scoreboard();
+    const match = scoreboard.startMatch("Brann", "Viking");
+    scoreboard.startMatch("Haugesund", "Lillestrøm");
+    scoreboard.startMatch("Rosenborg", "Start");
+    scoreboard.finishMatch(match);
+    const matches = scoreboard.getMatches();
+    expect(matches.length).toBe(2);
+  });
 });
