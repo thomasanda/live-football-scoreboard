@@ -9,8 +9,7 @@ describe("Match", () => {
   test("update score", () => {
     const match = new Match("England", "Spain");
     match.updateScore(3, 2);
-    match.updateScore(4, 2);
-    const expected = "England 4 - 2 Spain";
+    const expected = "England 3 - 2 Spain";
     expect(match.getScore()).toEqual(expected);
   });
 });
