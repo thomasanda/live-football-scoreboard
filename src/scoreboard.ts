@@ -13,9 +13,9 @@ class Scoreboard {
     return match;
   }
 
-  public finishMatch(match: Match): void {
+  public finishMatch(match: Match): Match[] {
     const index = this.matches.indexOf(match);
-    console.log(index);
+    return this.matches.splice(index, 1);
   }
 
   public getMatches(): Match[] {
