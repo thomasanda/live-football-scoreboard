@@ -18,8 +18,16 @@ class Scoreboard {
     return this.matches.splice(index, 1);
   }
 
-  public getMatches(): Match[] {
-    return this.matches;
+  public getMatchesSummary(): string[] {
+    return this.matches
+      .sort((a, b) => {
+        if (a.getTotalScore() !== b.getTotalScore()) {
+          return a.getTotalScore() - b.getTotalScore();
+        } else {
+          return b.getStartTime().getTime() - a.getStartTime().getTime();
+        }
+      })
+      .map((match) => match.getScore());
   }
 }
 
