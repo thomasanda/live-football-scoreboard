@@ -26,7 +26,10 @@ class Scoreboard {
 
   public finishMatch(match: Match): Match[] {
     const index = this.matches.indexOf(match);
-    return this.matches.splice(index, 1);
+    if (index !== -1) {
+      return this.matches.splice(index, 1);
+    }
+    return this.matches;
   }
 
   public getMatchesSummary(): string[] {
