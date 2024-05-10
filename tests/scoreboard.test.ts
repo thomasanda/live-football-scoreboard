@@ -9,6 +9,14 @@ describe("Scoreboard", () => {
     expect(matches.length).toBe(2);
   });
 
+  test("don't add match if team already playing", () => {
+    const scoreboard = new Scoreboard();
+    scoreboard.startMatch("England", "Norway", 1);
+    scoreboard.startMatch("Germany", "Norway", 2);
+    const matches = scoreboard.getMatchesSummary();
+    expect(matches.length).toBe(1);
+  });
+
   test("add new matches to scoreboard and update score", () => {
     const scoreboard = new Scoreboard();
     const match1 = scoreboard.startMatch("England", "Norway", 1);

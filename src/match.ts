@@ -32,6 +32,14 @@ class Match {
   public getId(): number {
     return this.id;
   }
+
+  public getHomeTeam(): string {
+    return this.homeTeam;
+  }
+
+  public getAwayTeam(): string {
+    return this.awayTeam;
+  }
 }
 
 export default Match;

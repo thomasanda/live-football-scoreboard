@@ -8,8 +8,19 @@ class Scoreboard {
   }
 
   public startMatch(homeTeam: string, awayTeam: string, id: number): Match {
+    const isHomeTeamPlaying = this.matches.some(
+      (match) => match.getHomeTeam() === homeTeam,
+    );
+    const isAwayTeamPlaying = this.matches.some(
+      (match) => match.getAwayTeam() === awayTeam,
+    );
+
     const match = new Match(homeTeam, awayTeam, id);
-    this.matches.push(match);
+    if (isHomeTeamPlaying || isAwayTeamPlaying) {
+      console.log`Unable to start match. ${isHomeTeamPlaying ? homeTeam : awayTeam} is already playing.`;
+    } else {
+      this.matches.push(match);
+    }
     return match;
   }
 
