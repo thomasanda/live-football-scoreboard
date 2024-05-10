@@ -3,16 +3,16 @@ class Match {
   private awayTeam: string;
   private homeScore: number;
   private awayScore: number;
-  private startTime: Date;
   private totalScore: number;
+  private id: number;
 
-  constructor(homeTeam: string, awayTeam: string) {
+  constructor(homeTeam: string, awayTeam: string, id: number) {
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
     this.homeScore = 0;
     this.awayScore = 0;
-    this.startTime = new Date();
     this.totalScore = 0;
+    this.id = id;
   }
 
   public getScore(): string {
@@ -25,12 +25,12 @@ class Match {
     this.totalScore = homeScore + awayScore;
   }
 
-  public getStartTime(): Date {
-    return this.startTime;
-  }
-
   public getTotalScore(): number {
     return this.totalScore;
+  }
+
+  public getId(): number {
+    return this.id;
   }
 }
 

@@ -7,8 +7,8 @@ class Scoreboard {
     this.matches = [];
   }
 
-  public startMatch(homeTeam: string, awayTeam: string): Match {
-    const match = new Match(homeTeam, awayTeam);
+  public startMatch(homeTeam: string, awayTeam: string, id: number): Match {
+    const match = new Match(homeTeam, awayTeam, id);
     this.matches.push(match);
     return match;
   }
@@ -22,9 +22,9 @@ class Scoreboard {
     return this.matches
       .sort((a, b) => {
         if (a.getTotalScore() !== b.getTotalScore()) {
-          return a.getTotalScore() - b.getTotalScore();
+          return b.getTotalScore() - a.getTotalScore();
         } else {
-          return b.getStartTime().getTime() - a.getStartTime().getTime();
+          return b.getId() - a.getId();
         }
       })
       .map((match) => match.getScore());
